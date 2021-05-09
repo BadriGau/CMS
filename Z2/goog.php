@@ -1,14 +1,7 @@
 <?php
 $ipaddress = $_SERVER["REMOTE_ADDR"];
 
-$dbhost="localhost"; $dbuser="id15600181_badri"; $dbpassword="19970301@Bad"; $dbname="id15600181_cms";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
-if (!$connection) {
-echo " MySQL Connection error." . PHP_EOL;
-echo "Errno: " . mysqli_connect_errno() . PHP_EOL;
-echo "Error: " . mysqli_connect_error() . PHP_EOL;
-exit;
-}
+require_once('../database/connection.php');
 mysqli_query($connection, "INSERT INTO googLink (Address) VALUES('$ipaddress')") or die ("DB error: $dbname");
 $result = mysqli_query($connection, "SELECT id,Address,datetime as dt,COUNT(*) FROM googLink GROUP BY Address ORDER BY `dt` DESC;") or die ("DB error: $dbname");
 print "<TABLE CELLPADDING=5 BORDER=1 >";

@@ -7,15 +7,7 @@
 <body>
 
 <?php
-// include("../header.php");
-$dbhost="localhost"; $dbuser="id15600181_badri"; $dbpassword="19970301@Bad"; $dbname="id15600181_cms";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
-if (!$connection) {
-echo " MySQL Connection error." . PHP_EOL;
-echo "Errno: " . mysqli_connect_errno() . PHP_EOL;
-echo "Error: " . mysqli_connect_error() . PHP_EOL;
-exit;
-}
+require_once('../database/connection.php');
 $result = mysqli_query($connection, "SELECT * FROM hostname") or die ("DB error: $dbname");
 print "<TABLE CELLPADDING=5 BORDER=1 >";
 print "<TR><TD>id</TD><TD>Address</TD><TD>port</TD><TD>Status</TD><TD>Failed Times</TD><TD>Failed Time</TD><TD>Total Failed Time</TD><TD>Action</TD></TR>\n";
